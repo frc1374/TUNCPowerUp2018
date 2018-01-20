@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1374.robot;
 
-
 import org.usfirst.frc.team1374.robot.Util.Xbox360Controller;
 
 /**
@@ -10,15 +9,15 @@ import org.usfirst.frc.team1374.robot.Util.Xbox360Controller;
 public class OI {
     private static final Xbox360Controller Controller = new Xbox360Controller(0);
 
-
-
-    public static double getDriverSpeed()
-        {
+    public static double getDriverSpeed() {
             return Controller.getRightTrigger() - Controller.getLeftTrigger();
-        }
-    public static double getSteer ()
-    {
+    }
+    public static double getSteer() {
         return Controller.getLeftXAxis();
+    }
+    
+    public static boolean getClimber() {
+    	return Controller.getButtonY();
     }
 
     /**Usage:

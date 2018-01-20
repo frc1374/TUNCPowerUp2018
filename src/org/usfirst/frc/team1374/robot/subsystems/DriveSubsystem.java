@@ -1,14 +1,16 @@
 package org.usfirst.frc.team1374.robot.subsystems;
 
+import org.usfirst.frc.team1374.robot.RobotMap;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveSubsystem extends Subsystem {
-    public TalonSRX left1 = new TalonSRX(0);
-    public TalonSRX left2 = new TalonSRX(1);
-    public TalonSRX right1 = new TalonSRX(2);
-    public TalonSRX right2 = new TalonSRX(3);
+    public TalonSRX left1 = new TalonSRX(RobotMap.left1);
+    public TalonSRX left2 = new TalonSRX(RobotMap.left2);
+    public TalonSRX right1 = new TalonSRX(RobotMap.right1);
+    public TalonSRX right2 = new TalonSRX(RobotMap.right2);
 
     
     public void setPIDDRIVE() {
@@ -28,14 +30,14 @@ public class DriveSubsystem extends Subsystem {
     	right2.set(ControlMode.Follower, 2);
     }
     
-    public void tankDrive (double left, double right){
+    public void tankDrive(double left, double right) {
         left1.set(ControlMode.PercentOutput, left);
         left2.set(ControlMode.PercentOutput, left);
         right1.set(ControlMode.PercentOutput, -right);
         right2.set(ControlMode.PercentOutput, -right);
     }
 
-        public void arcadeDrive (double speed, double turn){
+    public void arcadeDrive(double speed, double turn) {
         tankDrive (speed-turn, speed+turn);
     }
 }

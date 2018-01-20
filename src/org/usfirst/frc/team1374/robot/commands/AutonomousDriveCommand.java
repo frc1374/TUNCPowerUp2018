@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
+
 public class AutonomousDriveCommand extends Command {
 
 	int Distance;
@@ -36,9 +37,7 @@ public class AutonomousDriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (Math.abs(Subsystems.DRIVE_SUBSYSTEM.right1.getClosedLoopError(0)) < 10) {
-    		
     		End = System.currentTimeMillis();
-    		
     	}
     	
     	else {
