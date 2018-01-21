@@ -7,7 +7,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team1374.robot.commands.DriveCommands;
+
+import org.usfirst.frc.team1374.robot.commands.AutoLine;
+import org.usfirst.frc.team1374.robot.commands.DriveCommand;
 import org.usfirst.frc.team1374.robot.Util.Subsystems;
 
 /**
@@ -33,7 +35,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         sub = new Subsystems();
         //oi = new OI();
-        DriveCommands = new DriveCommands();
+        DriveCommands = new DriveCommand();
 
         chooser = new SendableChooser();
         //chooser.addDefault("Default Auto", new ExampleCommand());
@@ -55,8 +57,8 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-        autonomousCommand = (Command) chooser.getSelected();
-
+        // autonomousCommand = (Command) chooser.getSelected();
+    	autonomousCommand = new AutoLine();
 
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
