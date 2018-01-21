@@ -9,32 +9,15 @@ import org.usfirst.frc.team1374.robot.Util.Xbox360Controller;
 public class OI {
     private static final Xbox360Controller Controller = new Xbox360Controller(0);
 
-    public static double getDriverSpeed() {
-            return Controller.getRightTrigger() - Controller.getLeftTrigger();
-    }
-    public static double getSteer() {
-        return Controller.getLeftXAxis();
-    }
-    
-    public static boolean getClimber() {
-    	return Controller.getButtonY();
-    }
-    
-    public static boolean getHighGear() {
-    	return Controller.getButtonA();
-    }
-    
-    public static boolean getLowGear() {
-    	return Controller.getButtonB();
-    }
-    
-    public static boolean getOpen() {
-    	return Controller.getButtonLB();
-    }
-    
-    public static boolean getClose() {
-    	return Controller.getButtonRB();
-    }
+    public static double getDriverSpeed() { return Controller.getRightTrigger() - Controller.getLeftTrigger(); }
+    public static double getSteer() { return Controller.getLeftXAxis(); }
+    public static boolean getClimber() { return Controller.getButtonY(); }
+    public static boolean getHighGear() { return Controller.getButtonA(); }
+    public static boolean getLowGear() { return Controller.getButtonB(); }
+    public static boolean getOpen() { return Controller.getButtonLB(); }
+    public static boolean getClose() { return Controller.getButtonRB(); }
+    public static boolean getRaise() { return Controller.getClickLeftStick(); } //change once operator controller is added
+    public static boolean getLower() { return Controller.getClickRightStick(); } //change once operator controller is added
 
     /**Usage:
      *

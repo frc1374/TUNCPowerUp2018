@@ -2,6 +2,7 @@ package org.usfirst.frc.team1374.robot.Util;
 
 import org.usfirst.frc.team1374.robot.subsystems.ClimberSubsystem;
 import org.usfirst.frc.team1374.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team1374.robot.subsystems.IntakeSubsystem;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -17,9 +18,9 @@ public class Subsystems {
      */
     public static DriveSubsystem DRIVE_SUBSYSTEM;
     public static ClimberSubsystem CLIMBER_SUBSYSTEM;
+    public static IntakeSubsystem INTAKE_SUBSYSTEM;
 
-    public Subsystems()
-    {
+    public Subsystems() {
         /**
          * Usage:
          *
@@ -27,6 +28,7 @@ public class Subsystems {
          */
      DRIVE_SUBSYSTEM = new DriveSubsystem();
      CLIMBER_SUBSYSTEM = new ClimberSubsystem();
+     INTAKE_SUBSYSTEM = new IntakeSubsystem();
 
     }
 
