@@ -19,6 +19,22 @@ public class OI {
     public static boolean getClimber() {
     	return Controller.getButtonY();
     }
+    
+    public static boolean getHighGear() {
+    	return Controller.getButtonA();
+    }
+    
+    public static boolean getLowGear() {
+    	return Controller.getButtonB();
+    }
+    
+    public static boolean getOpen() {
+    	return Controller.getButtonLB();
+    }
+    
+    public static boolean getClose() {
+    	return Controller.getButtonRB();
+    }
 
     /**Usage:
      *

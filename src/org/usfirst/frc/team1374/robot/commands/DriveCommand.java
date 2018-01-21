@@ -20,7 +20,9 @@ public class DriveCommand extends Command {
 
     @Override
     protected void execute() {
-        Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(OI.getDriverSpeed(), OI.getSteer());
+    	Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(OI.getDriverSpeed(), OI.getSteer());
+    	Subsystems.DRIVE_SUBSYSTEM.shiftGear(OI.getHighGear(), OI.getLowGear());
+    	Subsystems.DRIVE_SUBSYSTEM.Grabber(OI.getOpen(), OI.getClose());
     }
 
     @Override
