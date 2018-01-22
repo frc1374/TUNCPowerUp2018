@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1374.robot.subsystems;
 
+import org.usfirst.frc.team1374.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -9,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class IntakeSubsystem extends Subsystem {
 	
-	public static DoubleSolenoid grab = new DoubleSolenoid(2, 3);
-	public static DoubleSolenoid raise = new DoubleSolenoid(4,5);
+	public static DoubleSolenoid grab = new DoubleSolenoid(RobotMap.grab1, RobotMap.grab2);
+	public static DoubleSolenoid raise = new DoubleSolenoid(RobotMap.raise1, RobotMap.raise2);
 
 	public void grabber(boolean open, boolean close) {
 

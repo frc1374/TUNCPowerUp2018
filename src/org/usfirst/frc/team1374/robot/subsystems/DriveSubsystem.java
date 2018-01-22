@@ -13,8 +13,8 @@ public class DriveSubsystem extends Subsystem {
     public TalonSRX left2 = new TalonSRX(RobotMap.left2);
     public TalonSRX right1 = new TalonSRX(RobotMap.right1);
     public TalonSRX right2 = new TalonSRX(RobotMap.right2);
-    public Compressor c = new Compressor(0);
-    public static DoubleSolenoid s = new DoubleSolenoid(0, 1);
+    public Compressor c = new Compressor(RobotMap.compressor);
+    public static DoubleSolenoid shift = new DoubleSolenoid(RobotMap.shift1, RobotMap.shift2);
     
     
     public void CompressorControl(){
@@ -53,11 +53,11 @@ public class DriveSubsystem extends Subsystem {
   //msg to future chris up and down is in drive commands and becomes 
   //true/false when pressed and just change it from other things when changing
     	if (up) {
-    		s.set(Value.kForward);
+    		shift.set(Value.kForward);
     	}
     	
     	else if (down) {
-    		s.set(Value.kReverse);
+    		shift.set(Value.kReverse);
     	}
     	
     }
