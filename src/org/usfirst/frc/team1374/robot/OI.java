@@ -22,8 +22,8 @@ public class OI {
     public static boolean getClose() { return Operator.getButtonLB(); }
     public static boolean getRaise() { return Operator.getLeftYAxis() == 1; }
     public static boolean getLower() { return Operator.getLeftYAxis() == -1; }
-    
-    
+    public static boolean getPush() { return Operator.getRightYAxis() == 1;}
+    public static boolean getPull() { return Operator.getRightYAxis() == -1;}
     /**Usage:
      *
      * private static final Xbox360Controller JS_DRIVER = new Xbox360Controller(int port,double deadzone)

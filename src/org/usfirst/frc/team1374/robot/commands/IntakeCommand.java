@@ -24,6 +24,7 @@ public class IntakeCommand extends Command {
     protected void execute() {
     	Subsystems.INTAKE_SUBSYSTEM.grabber(OI.getOpen(), OI.getClose());
     	Subsystems.INTAKE_SUBSYSTEM.raiseIntake(OI.getRaise(), OI.getLower());
+    	Subsystems.INTAKE_SUBSYSTEM.pushBlock(OI.getPush(), OI.getPull());
     }
 
     // Make this return true when this Command no longer needs to run execute()

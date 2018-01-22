@@ -13,7 +13,7 @@ public class IntakeSubsystem extends Subsystem {
 	
 	public static DoubleSolenoid grab = new DoubleSolenoid(RobotMap.grab1, RobotMap.grab2);
 	public static DoubleSolenoid raise = new DoubleSolenoid(RobotMap.raise1, RobotMap.raise2);
-
+    public static DoubleSolenoid push = new DoubleSolenoid(RobotMap.push1, RobotMap.push2);
 	public void grabber(boolean open, boolean close) {
 
     	if (open) {
@@ -37,6 +37,16 @@ public class IntakeSubsystem extends Subsystem {
     	}
     	
     }
+	
+	public void pushBlock(boolean forward, boolean back) {
+		if (forward) {
+    		raise.set(Value.kForward);
+    	}
+    	
+    	else if (back) {
+    		raise.set(Value.kReverse);
+    	}
+	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

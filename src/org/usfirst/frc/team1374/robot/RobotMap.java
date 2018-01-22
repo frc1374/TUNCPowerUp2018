@@ -31,6 +31,9 @@ public class RobotMap {
     public static final int grab1      = 2;
     public static final int grab2      = 3;
     
+    public static final int push1      = 6;
+    public static final int push2      = 7;
+    
     public static final int raise1     = 4;
     public static final int raise2     = 5;
     
