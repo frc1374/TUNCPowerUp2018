@@ -40,11 +40,11 @@ public class IntakeSubsystem extends Subsystem {
 	
 	public void pushBlock(boolean forward, boolean back) {
 		if (forward) {
-    		raise.set(Value.kForward);
+    		push.set(Value.kForward);
     	}
     	
     	else if (back) {
-    		raise.set(Value.kReverse);
+    		push.set(Value.kReverse);
     	}
 	}
 	

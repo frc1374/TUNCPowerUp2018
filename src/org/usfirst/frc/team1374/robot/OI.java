@@ -24,6 +24,24 @@ public class OI {
     public static boolean getLower() { return Operator.getLeftYAxis() == -1; }
     public static boolean getPush() { return Operator.getRightYAxis() == 1;}
     public static boolean getPull() { return Operator.getRightYAxis() == -1;}
+   
+    /*                                 Controls
+     * Driver
+     * Right trigger-forwards
+     * Left trigger-backwards
+     * Left stick-steer 
+     * A-B-gear switches
+     * 
+     * 
+     *                                 Operator
+     * Y-climb
+     * Right bumper Left bumper-open,close the grabber
+     * Left Y axis-raise or lower the grabber
+     * Right Y axis-push the block and bring back the pusher
+     */
+    
+    
+    
     /**Usage:
      *
      * private static final Xbox360Controller JS_DRIVER = new Xbox360Controller(int port,double deadzone)
