@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 public class DriveSubsystem extends Subsystem {
+	public static int speedconst = 10;
     public TalonSRX left1 = new TalonSRX(RobotMap.left1);
     public TalonSRX left2 = new TalonSRX(RobotMap.left2);
     public TalonSRX right1 = new TalonSRX(RobotMap.right1);
@@ -24,18 +25,21 @@ public class DriveSubsystem extends Subsystem {
     public void setPIDDRIVE() {
     	left1.set(ControlMode.Position, 0);
     	right1.set(ControlMode.Position, 0);
+    	left2.set(ControlMode.Follower, 0);
+    	right2.set(ControlMode.Follower, 2);
     }
     
     public void setREGULARDRIVE(){
-    	left1.set(ControlMode.PercentOutput, 0);
-    	right1.set(ControlMode.PercentOutput, 0);
+    	left1.set(ControlMode.Velocity, 0);
+    	right1.set(ControlMode.Velocity, 0);
+    	left2.set(ControlMode.Follower, 0);
+    	right2.set(ControlMode.Follower, 2);
     }
     
     
     @Override
     protected void initDefaultCommand() {
-    	left2.set(ControlMode.Follower, 0);
-    	right2.set(ControlMode.Follower, 2);
+    	
     }
     
     public void tankDrive(double left, double right) {

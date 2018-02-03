@@ -2,51 +2,34 @@ package org.usfirst.frc.team1374.robot.subsystems;
 
 import org.usfirst.frc.team1374.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
 public class IntakeSubsystem extends Subsystem {
+	public TalonSRX intake = new TalonSRX(RobotMap.intake);
+	public TalonSRX intake2 = new TalonSRX(RobotMap.intake2);
 	
-	public static DoubleSolenoid grab = new DoubleSolenoid(RobotMap.grab1, RobotMap.grab2);
-	public static DoubleSolenoid raise = new DoubleSolenoid(RobotMap.raise1, RobotMap.raise2);
-    public static DoubleSolenoid push = new DoubleSolenoid(RobotMap.push1, RobotMap.push2);
-	public void grabber(boolean open, boolean close) {
-
-    	if (open) {
-    		grab.set(Value.kForward);
-    	}
-    	
-    	else if (close) {
-    		grab.set(Value.kReverse);
-    	}
-    	
-    }
-	
-	public void raiseIntake(boolean up, boolean down) {
-
-    	if (up) {
-    		raise.set(Value.kForward);
-    	}
-    	
-    	else if (down) {
-    		raise.set(Value.kReverse);
-    	}
-    	
-    }
-	
-	public void pushBlock(boolean forward, boolean back) {
-		if (forward) {
-    		push.set(Value.kForward);
-    	}
-    	
-    	else if (back) {
-    		push.set(Value.kReverse);
-    	}
+public void intakefb(boolean intakef, boolean intakeb) {
+		
+		if (intakef) {
+			intake.set(ControlMode.PercentOutput, 1);
+			intake2.set(ControlMode.PercentOutput, 1);
+		}
+		if (intakeb) {
+			intake.set(ControlMode.PercentOutput, -1);
+			intake2.set(ControlMode.PercentOutput, -1);
+		}
+		else {
+			intake.set(ControlMode.PercentOutput, 0);
+			intake2.set(ControlMode.PercentOutput, 0);
+		}
+		
 	}
+	
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

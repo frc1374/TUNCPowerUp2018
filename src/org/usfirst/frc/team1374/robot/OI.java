@@ -18,12 +18,8 @@ public class OI {
     
     // operator
     public static boolean getClimber() { return Operator.getButtonY(); }
-    public static boolean getOpen() { return Operator.getButtonRB(); }
-    public static boolean getClose() { return Operator.getButtonLB(); }
-    public static boolean getRaise() { return Operator.getLeftYAxis() == 1; }
-    public static boolean getLower() { return Operator.getLeftYAxis() == -1; }
-    public static boolean getPush() { return Operator.getRightYAxis() == 1;}
-    public static boolean getPull() { return Operator.getRightYAxis() == -1;}
+    public static boolean getIntakef() {return Operator.getButtonA(); }
+    public static boolean getIntakeb() {return Operator.getButtonB(); }
    
     /*                                 Controls
      * Driver
