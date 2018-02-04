@@ -4,24 +4,23 @@ import org.usfirst.frc.team1374.robot.Util.Subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 
 
 public class AutonomousDriveCommand extends Command {
 
-	int Distance;
 	double Start, End, Time, Speed;
+	boolean Open;
 	
-    public AutonomousDriveCommand(double speed, double time, int distance) {
+    public AutonomousDriveCommand(double speed, double time, boolean open) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Subsystems.DRIVE_SUBSYSTEM);
-    	Distance = distance;
     	Time = time;
     	Speed = speed;
+    	Open = open;
     }
-    
-    
     
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -32,6 +31,7 @@ public class AutonomousDriveCommand extends Command {
     	End = System.currentTimeMillis();
     	
     	Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(0, 0);
+    	Subsystems.INTAKE_SUBSYSTEM.openArmwheel(false, false);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -46,6 +46,7 @@ public class AutonomousDriveCommand extends Command {
     	
     	// System.out.println(End - Start); */
     	Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(Speed, 0);
+    	Subsystems.INTAKE_SUBSYSTEM.openArmwheel(Open, !Open);
     }
 
     // Make this return true when this Command no longer needs to run execute()

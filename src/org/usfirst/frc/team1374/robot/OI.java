@@ -20,6 +20,8 @@ public class OI {
     public static boolean getClimber() { return Operator.getButtonY(); }
     public static boolean getIntakef() {return Operator.getButtonA(); }
     public static boolean getIntakeb() {return Operator.getButtonB(); }
+    public static boolean getOpenarm1() {return Operator.getButtonLB(); }
+    public static boolean getOpenarm2() {return Operator.getButtonRB(); }
    
     /*                                 Controls
      * Driver

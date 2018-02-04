@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class AutoLine extends CommandGroup {
-
     public AutoLine() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -24,6 +23,6 @@ public class AutoLine extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new AutonomousDriveCommand(0.75, 5000, 0));
+    	addSequential(new AutonomousDriveCommand(0.75, 5000, true));
     }
 }

@@ -30,6 +30,8 @@ public class RobotMap {
     // intake
     public static final int intake     = 5;
     public static final int intake2    = 6;
+    public static final int openArm1   = 2;
+    public static final int openArm2   = 3;
     // climb
     public static final int climber    = 4;
     
