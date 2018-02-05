@@ -34,14 +34,18 @@ public class IntakeSubsystem extends Subsystem {
 		    	
 		    }
 		    
-public void intakeArmfb(boolean forwards, boolean back) {
+public void intakeArmfb(boolean forwards, boolean back, boolean not) {
 	if (forwards) {
 		intakeArm1.set(ControlMode.PercentOutput, 1);
 		intakeArm2.set(ControlMode.PercentOutput, -1);
 	}
-	if (back) {
+	else if (back) {
 		intakeArm1.set(ControlMode.PercentOutput, -1);
 		intakeArm2.set(ControlMode.PercentOutput, 1);
+	}
+	else if (not){
+		intakeArm1.set(ControlMode.PercentOutput, 0);
+		intakeArm2.set(ControlMode.PercentOutput, 0);
 	}
 	else {
 		intakeArm1.set(ControlMode.PercentOutput, 0);
@@ -50,15 +54,20 @@ public void intakeArmfb(boolean forwards, boolean back) {
 }
 	 
 	 
-public void intakefb(boolean intakef, boolean intakeb) {
-		
+public void intakefb(boolean intakef, boolean intakeb, boolean not) {
+		//so the reason I have 3 things is because of in auto, when its false in auto it does nothing, but you can do that with 2, so yeet
+	// if you were to do this regularly use 2
 		if (intakef) {
 			intake.set(ControlMode.PercentOutput, 1);
 			intake2.set(ControlMode.PercentOutput, -1);
 		}
-		if (intakeb) {
+		else if (intakeb) {
 			intake.set(ControlMode.PercentOutput, -1);
 			intake2.set(ControlMode.PercentOutput, 1);
+		}
+		else if (not){
+			intake.set(ControlMode.PercentOutput, 0);
+			intake2.set(ControlMode.PercentOutput, 0);
 		}
 		else {
 			intake.set(ControlMode.PercentOutput, 0);

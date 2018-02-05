@@ -11,15 +11,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class AutonomousDriveCommand extends Command {
 
 	double Start, End, Time, Speed;
-	boolean Open;
+	boolean Open, Intake, Intakearm;
 	
-    public AutonomousDriveCommand(double speed, double time, boolean open) {
+    public AutonomousDriveCommand(double speed, double time, boolean open, boolean intake, boolean intakearm) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Subsystems.DRIVE_SUBSYSTEM);
     	Time = time;
     	Speed = speed;
     	Open = open;
+    	Intake = intake;
+    	Intakearm = intakearm;
     }
     
     // Called just before this Command runs the first time
@@ -32,6 +34,8 @@ public class AutonomousDriveCommand extends Command {
     	
     	Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(0, 0);
     	Subsystems.INTAKE_SUBSYSTEM.openArmwheel(false, false);
+    	Subsystems.INTAKE_SUBSYSTEM.intakefb(false, false, true);
+    	Subsystems.INTAKE_SUBSYSTEM.intakeArmfb(false, false, true);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -47,6 +51,8 @@ public class AutonomousDriveCommand extends Command {
     	// System.out.println(End - Start); */
     	Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(Speed, 0);
     	Subsystems.INTAKE_SUBSYSTEM.openArmwheel(Open, !Open);
+    	Subsystems.INTAKE_SUBSYSTEM.intakefb(Intake, false, !Intake);// the third one is do nothing, its go forward or nothing
+    	Subsystems.INTAKE_SUBSYSTEM.intakeArmfb(Intakearm, false, !Intakearm);// the third one is do nothing, its go forward or nothing
     }
 
     // Make this return true when this Command no longer needs to run execute()

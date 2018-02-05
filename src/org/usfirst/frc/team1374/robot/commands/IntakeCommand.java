@@ -22,8 +22,8 @@ public class IntakeCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Subsystems.INTAKE_SUBSYSTEM.intakefb(OI.getIntakef(), OI.getIntakeb());
-    	Subsystems.INTAKE_SUBSYSTEM.intakeArmfb(OI.getIntakearmf(), OI.getIntakeb());
+    	Subsystems.INTAKE_SUBSYSTEM.intakefb(OI.getIntakef(), OI.getIntakeb(), false);
+    	Subsystems.INTAKE_SUBSYSTEM.intakeArmfb(OI.getIntakearmf(), OI.getIntakeb(), false);
     }
 
     // Make this return true when this Command no longer needs to run execute()
