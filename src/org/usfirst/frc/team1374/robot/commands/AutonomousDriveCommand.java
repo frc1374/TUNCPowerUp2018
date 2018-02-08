@@ -6,7 +6,20 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
-
+/* MATH******
+ * LOWGEAR RATIO 114:54
+ * HIGHGEAR RATIO 98:70
+ * 6in diamiter wheels, so the we have  18.84"  circumference
+ * so  encoder tick=tire rotation= distance travaled 
+ * LOWGEAR MATH********
+ * for every 114 rotations of the encoder is 7296 ticks
+ * thats 54 rotations of the wheel, which is 1017.36in
+ * that means that for every encoder tick, the bot will travel 0.13944078947in
+ * HIGHGEAR MATH*******
+ * for every 98 rotations of the encoder is 6272 ticks
+ * thats 70 rotations of the wheel, which is 1318.8in
+ * that means that for every encoder tick, the bot will travel 0.21026785714in
+ */
 
 public class AutonomousDriveCommand extends Command {
 
