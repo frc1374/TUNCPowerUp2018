@@ -12,16 +12,15 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class AutonomousDriveCommand extends Command {
 
-	int Distance;
-	double Start, End, Time, Speed;
+	double Start, End, Time, Speed, Turn;
 	
-    public AutonomousDriveCommand(double speed, double time, int distance) {
+    public AutonomousDriveCommand(double speed, double time, double turn) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Subsystems.DRIVE_SUBSYSTEM);
-    	Distance = distance;
     	Time = time;
     	Speed = speed;
+    	Turn = turn;
     }
     
     
@@ -48,7 +47,8 @@ public class AutonomousDriveCommand extends Command {
     	}
     	
     	// System.out.println(End - Start); */
-    	Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(Speed, 0);
+    	Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(Speed, Turn);
+    	End = System.currentTimeMillis();
     }
 
     // Make this return true when this Command no longer needs to run execute()
