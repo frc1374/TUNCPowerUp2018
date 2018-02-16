@@ -19,61 +19,31 @@ public class IntakeSubsystem extends Subsystem {
 	public static DoubleSolenoid openArm = new DoubleSolenoid(RobotMap.openArm1, RobotMap.openArm2);
 	
 	
-	 public void openArmwheel(boolean close, boolean open) {
-		 /*so the arm opens once and for the rest of the game stays open and probably starts open imo,
-		 *so then this is basically for in the pit if the bot in on you can do it with operator, but im going to try to make it open in auto
-		 *when in the pits use the manual overide for putting the solemoid back in place, or be alpha and use operator
-		 */
-		    	if (close) {
-		    		openArm.set(Value.kForward);
-		    	}
-		    	
-		    	else if (open) {
-		    		openArm.set(Value.kReverse);
-		    	}
-		    	
+	 public void openArmwheel() {
+		    	openArm.set(openArm.get() == Value.kReverse ? Value.kForward : Value.kReverse);
 		    }
+	 public void openArmwheelauto(boolean open, boolean close){
+		 if (open) {
+	    		openArm.set(Value.kForward);
+	    	}
+	    	
+	    	else if (close) {
+	    		openArm.set(Value.kReverse);
+	    	}
+	    	
+	 }
 		    
-public void intakeArmfb(boolean forwards, boolean back, boolean not) {
-	if (forwards) {
-		intakeArm1.set(ControlMode.PercentOutput, 1);
-		intakeArm2.set(ControlMode.PercentOutput, -1);
-	}
-	else if (back) {
-		intakeArm1.set(ControlMode.PercentOutput, -1);
-		intakeArm2.set(ControlMode.PercentOutput, 1);
-	}
-	else if (not){
-		intakeArm1.set(ControlMode.PercentOutput, 0);
-		intakeArm2.set(ControlMode.PercentOutput, 0);
-	}
-	else {
-		intakeArm1.set(ControlMode.PercentOutput, 0);
-		intakeArm2.set(ControlMode.PercentOutput, 0);
-	}
+public void intakeArmfb(double axis) {
+		intakeArm1.set(ControlMode.PercentOutput, +axis);
+		intakeArm2.set(ControlMode.PercentOutput, -axis);
+	
 }
 	 
 	 
-public void intakefb(boolean intakef, boolean intakeb, boolean not) {
-		//so the reason I have 3 things is because of in auto, when its false in auto it does nothing, but you can do that with 2, so yeet
-	// if you were to do this regularly use 2
-		if (intakef) {
-			intake.set(ControlMode.PercentOutput, 1);
-			intake2.set(ControlMode.PercentOutput, -1);
-		}
-		else if (intakeb) {
-			intake.set(ControlMode.PercentOutput, -1);
-			intake2.set(ControlMode.PercentOutput, 1);
-		}
-		else if (not){
-			intake.set(ControlMode.PercentOutput, 0);
-			intake2.set(ControlMode.PercentOutput, 0);
-		}
-		else {
-			intake.set(ControlMode.PercentOutput, 0);
-			intake2.set(ControlMode.PercentOutput, 0);
-		}
-		
+public void intakefb(double axis) {
+		axis = axis * 0.2;
+			intake.set(ControlMode.PercentOutput, +axis);
+			intake2.set(ControlMode.PercentOutput, -axis);
 	}
 	
 	

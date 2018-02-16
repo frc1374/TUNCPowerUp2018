@@ -2,6 +2,9 @@ package org.usfirst.frc.team1374.robot;
 
 import org.usfirst.frc.team1374.robot.Util.Xbox360Controller;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -18,10 +21,11 @@ public class OI {
     
     // operator
     public static boolean getClimber() { return Operator.getButtonY(); }
-    public static boolean getIntakef() {return Operator.getButtonA(); }
-    public static boolean getIntakeb() {return Operator.getButtonB(); }
-    public static boolean getIntakearmf() {return Operator.getButtonLB(); }
-    public static boolean getIntakearmb() {return Operator.getButtonRB(); }
+    public static double getIntake() {return Operator.getRightYAxis(); }
+    public static double getIntakearm() {return Operator.getLeftYAxis(); }
+    public static boolean getIntakeToggle() {
+    	return Operator.getButtonA();
+    }
     /*                                 Controls
      * Driver
      * Right trigger-forwards

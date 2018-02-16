@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1374.robot.commands;
 
-import org.usfirst.frc.team1374.robot.OI;
 import org.usfirst.frc.team1374.robot.Util.Subsystems;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,28 +7,32 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class IntakeCommand extends Command {
+public class AutonomousIntakeCommand extends Command {
 
-    public IntakeCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Subsystems.INTAKE_SUBSYSTEM);
+	double Intake;
+	double time;
+	double start;
+    public AutonomousIntakeCommand(double intake, double time) {
+     	requires(Subsystems.INTAKE_SUBSYSTEM);
+     	
+     	intake = Intake;
+     	start=System.currentTimeMillis();
+     	this.time=time*1000;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Subsystems.INTAKE_SUBSYSTEM.intakefb(0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Subsystems.INTAKE_SUBSYSTEM.intakefb(OI.getIntake());
-    	Subsystems.INTAKE_SUBSYSTEM.intakeArmfb(OI.getIntakearm());
-    	if(OI.getIntakeToggle()) Subsystems.INTAKE_SUBSYSTEM.openArmwheel();
+    	Subsystems.INTAKE_SUBSYSTEM.intakefb(Intake);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return System.currentTimeMillis() > start + time;
     }
 
     // Called once after isFinished returns true

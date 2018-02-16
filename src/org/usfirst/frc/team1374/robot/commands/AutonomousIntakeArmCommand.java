@@ -8,23 +8,22 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class IntakeCommand extends Command {
-
-    public IntakeCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+public class AutonomousIntakeArmCommand extends Command {
+	boolean Open;
+    public AutonomousIntakeArmCommand(boolean open) {
     	requires(Subsystems.INTAKE_SUBSYSTEM);
+    	
+    	open = Open;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Subsystems.INTAKE_SUBSYSTEM.openArmwheelauto(false, false);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Subsystems.INTAKE_SUBSYSTEM.intakefb(OI.getIntake());
-    	Subsystems.INTAKE_SUBSYSTEM.intakeArmfb(OI.getIntakearm());
-    	if(OI.getIntakeToggle()) Subsystems.INTAKE_SUBSYSTEM.openArmwheel();
+    	Subsystems.INTAKE_SUBSYSTEM.openArmwheelauto(Open, !Open);
     }
 
     // Make this return true when this Command no longer needs to run execute()
