@@ -17,35 +17,45 @@ public class IntakeSubsystem extends Subsystem {
 	public TalonSRX intakeArm1 = new TalonSRX(RobotMap.intakeArm1);
 	public TalonSRX intakeArm2 = new TalonSRX(RobotMap.intakeArm2);
 	public static DoubleSolenoid openArm = new DoubleSolenoid(RobotMap.openArm1, RobotMap.openArm2);
+	public static DoubleSolenoid lowerArm = new DoubleSolenoid(RobotMap.lowerArm1, RobotMap.lowerArm2);
 	
-	
-	 public void openArmwheel() {
-		    	openArm.set(openArm.get() == Value.kReverse ? Value.kForward : Value.kReverse);
-		    }
-	 public void openArmwheelauto(boolean open, boolean close){
-		 if (open) {
-	    		openArm.set(Value.kForward);
-	    	}
-	    	
-	    	else if (close) {
-	    		openArm.set(Value.kReverse);
-	    	}
-	    	
-	 }
-		    
-public void intakeArmfb(double axis) {
-		intakeArm1.set(ControlMode.PercentOutput, +axis);
-		intakeArm2.set(ControlMode.PercentOutput, -axis);
-	
-}
-	 
-	 
-public void intakefb(double axis) {
-		axis = axis * 0.2;
-			intake.set(ControlMode.PercentOutput, +axis);
-			intake2.set(ControlMode.PercentOutput, -axis);
+	public void openArmWheel() {
+		openArm.set(openArm.get() == Value.kReverse ? Value.kForward : Value.kReverse);
 	}
 	
+	public void openArmWheelAuto(boolean open, boolean close) {
+		
+		if (open) {
+			openArm.set(Value.kForward);
+	    }
+	    	
+	    else if (close) {
+	    	openArm.set(Value.kReverse);
+	    } 	
+	}
+	
+	public void lowerIntakeArm(boolean down, boolean up) {
+		
+		if (down) {
+			lowerArm.set(Value.kForward);
+		}
+		
+		else if (up) {
+			openArm.set(Value.kReverse);
+		}
+	}
+		    
+	public void intakeArmFB(double axis) {
+		intakeArm1.set(ControlMode.PercentOutput, +axis);
+		intakeArm2.set(ControlMode.PercentOutput, -axis);
+	}
+	 
+	 
+	public void intakeFB(double axis) {
+		axis = axis * 0.2;
+		intake.set(ControlMode.PercentOutput, +axis);
+		intake2.set(ControlMode.PercentOutput, -axis);
+	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

@@ -11,7 +11,7 @@ public class AutonomousGearCommand extends Command {
 	boolean Gear;
     	 public AutonomousGearCommand(boolean gear) {
     		 requires(Subsystems.DRIVE_SUBSYSTEM);
-    		 gear = Gear;
+    		 Gear = gear;
     	 }
     	     	
         // Use requires() here to declare subsystem dependencies

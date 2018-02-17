@@ -28,10 +28,13 @@ public class RobotMap {
     public static final int shift2     = 1;
     
     // intake
-    public static final int intake     = 5;
-    public static final int intake2    = 6;
     public static final int openArm1   = 2;
     public static final int openArm2   = 3;
+    public static final int lowerArm1  = 4;
+    public static final int lowerArm2  = 5;
+    
+    public static final int intake     = 5;
+    public static final int intake2    = 6;
     public static final int intakeArm1 = 7;
     public static final int intakeArm2 = 8;
 

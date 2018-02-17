@@ -22,10 +22,10 @@ public class OI {
 
     // operator
     public static boolean getClimber() { return Operator.getButtonY(); }
-
     public static double getIntake() { return Operator.getRightYAxis(); }
-    public static double getIntakearm() {return Operator.getLeftYAxis(); }
+    public static double getIntakeArm() {return Operator.getLeftYAxis(); }
     public static boolean getIntakeToggle() { return Operator.getButtonA(); }
+    
     /*                                 Controls
      * Driver
      * Right trigger-forwards
