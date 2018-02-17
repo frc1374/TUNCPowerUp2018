@@ -6,8 +6,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class AutoLine extends CommandGroup {
-
     public AutoLine() {
+    	//AutonomousDriveCommand(speed, time, open arm for intake, intake motor, intake arm motor)
+    	//the true and false for the arm is only to be used once true at the beginning of every auto command
+    	//the rest are to turn on the motors for the intake arm and intake, and true  turn on false turns off, no speed control
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

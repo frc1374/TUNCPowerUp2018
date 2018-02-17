@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1374.robot.commands;
 
-import org.usfirst.frc.team1374.robot.OI;
 import org.usfirst.frc.team1374.robot.Util.Subsystems;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,25 +7,27 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class IntakeCommand extends Command {
-
-    public IntakeCommand() {
+public class AutonomousGearCommand extends Command {
+	boolean Gear;
+    	 public AutonomousGearCommand(boolean gear) {
+    		 requires(Subsystems.DRIVE_SUBSYSTEM);
+    		 gear = Gear;
+    	 }
+    	     	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Subsystems.INTAKE_SUBSYSTEM);
-    }
+    
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Subsystems.DRIVE_SUBSYSTEM.shiftGear(true, false);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Subsystems.INTAKE_SUBSYSTEM.intakefb(OI.getIntake());
-    	Subsystems.INTAKE_SUBSYSTEM.intakeArmfb(OI.getIntakearm());
-    	if(OI.getIntakeToggle()) Subsystems.INTAKE_SUBSYSTEM.openArmwheel();
+    	Subsystems.DRIVE_SUBSYSTEM.shiftGear(Gear, !Gear);
     }
-    
+
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
