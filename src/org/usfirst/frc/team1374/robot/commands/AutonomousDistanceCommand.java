@@ -19,7 +19,6 @@ public class AutonomousDistanceCommand extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Subsystems.DRIVE_SUBSYSTEM);
-    	
     	Distance = distance;
     }
 
@@ -32,8 +31,9 @@ public class AutonomousDistanceCommand extends Command {
 		Subsystems.DRIVE_SUBSYSTEM.right1.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 10);
 		/* first choose the sensor */
 		Subsystems.DRIVE_SUBSYSTEM.left1.setSensorPhase(true);
-    	Subsystems.DRIVE_SUBSYSTEM.right1.setSensorPhase(false);
+    	Subsystems.DRIVE_SUBSYSTEM.right1.setSensorPhase(true);
     	Subsystems.DRIVE_SUBSYSTEM.left1.setInverted(false);
+    	Subsystems.DRIVE_SUBSYSTEM.left2.setInverted(false);
 		Subsystems.DRIVE_SUBSYSTEM.right1.setInverted(true);
 		Subsystems.DRIVE_SUBSYSTEM.right2.setInverted(true);
 
@@ -77,7 +77,7 @@ public class AutonomousDistanceCommand extends Command {
 		Subsystems.DRIVE_SUBSYSTEM.right1.setSelectedSensorPosition(absolutePosition2, 0, 10);
   		  
     	//Subsystems.DRIVE_SUBSYSTEM.setPIDDRIVE();
-    	//Subsystems.DRIVE_SUBSYSTEM.distanceDrive(Distance);
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -87,11 +87,11 @@ public class AutonomousDistanceCommand extends Command {
     		
     		Subsystems.DRIVE_SUBSYSTEM.left1.setSelectedSensorPosition(0, 0, 0);
     		Subsystems.DRIVE_SUBSYSTEM.right1.setSelectedSensorPosition(0, 0, 0);
-			targetPositionRotations = Distance * 5.0 * 4096;
+			/*targetPositionRotations = Distance * 5.0 * 4096;
 			Subsystems.DRIVE_SUBSYSTEM.left1.set(ControlMode.Position, targetPositionRotations);
 			Subsystems.DRIVE_SUBSYSTEM.left2.set(ControlMode.Follower, 0);
 			Subsystems.DRIVE_SUBSYSTEM.right1.set(ControlMode.Position, targetPositionRotations);
-			Subsystems.DRIVE_SUBSYSTEM.right2.set(ControlMode.Follower, 2);
+			Subsystems.DRIVE_SUBSYSTEM.right2.set(ControlMode.Follower, 2);*/
     	}
     	
     	else {
@@ -102,6 +102,7 @@ public class AutonomousDistanceCommand extends Command {
     	
     	System.out.println(Subsystems.DRIVE_SUBSYSTEM.left1.getClosedLoopError(0) + " left1");
         System.out.println(Subsystems.DRIVE_SUBSYSTEM.right1.getClosedLoopError(0) + " right1");
+        Subsystems.DRIVE_SUBSYSTEM.distanceDrive(Distance);
     }
 
     // Make this return true when this Command no longer needs to run execute()
