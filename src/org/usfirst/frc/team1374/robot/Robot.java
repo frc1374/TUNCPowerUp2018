@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1374.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -39,11 +40,12 @@ public class Robot extends IterativeRobot {
         DriveCommands = new DriveCommand();
         IntakeCommands = new IntakeCommand();
         chooser = new SendableChooser();
-        /* chooser.addDefault("Default Auto", new AutoLine());
-        chooser.addObject("Straight Switch", new StraightSwitch());
-        chooser.addObject("Left Switch - Center Position", new TurnLeftSwitch());
-        chooser.addObject("Right Switch - Center Position", new TurnRightSwitch());
-        SmartDashboard.putData("Auto mode", chooser); */
+        chooser.addDefault("Default Auto", new AutoLine());
+        chooser.addObject("Left DS", new StraightSwitch());
+        chooser.addObject("Center DS", new TurnLeftSwitch());
+        chooser.addObject("Right DS", new TurnRightSwitch());
+        SmartDashboard.putData("Auto mode", chooser);
+        CameraServer.getInstance().startAutomaticCapture();
     }
 
     /**
@@ -91,7 +93,7 @@ public class Robot extends IterativeRobot {
         }
         
         // autonomousCommand = (Command) chooser.getSelected();
-    	//autonomousCommand = new AutoLine();
+    	autonomousCommand = new AutoLine();
     	//autonomousCommand = new AutonomousDriveCommand(0.5, 3500);
     	//autonomousCommand = new AutonomousDistanceCommand(1);
         // schedule the autonomous command (example)

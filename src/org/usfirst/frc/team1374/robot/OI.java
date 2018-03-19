@@ -14,7 +14,7 @@ public class OI {
     private static final Xbox360Controller Operator = new Xbox360Controller(1);
 
     // driver
-    public static double getDriverSpeed() { return Driver.getRightTrigger() - Driver.getLeftTrigger(); }
+    public static double getDriverSpeed() { return Driver.getLeftTrigger() - Driver.getRightTrigger(); }
     public static double getSteer() { return Driver.getLeftXAxis(); }
     //public static boolean distanceDrive() { return Driver.getButtonA(); }
     public static boolean getHighGear() { return Driver.getButtonA(); }

@@ -25,7 +25,7 @@ public class RobotMap {
     public static final int compressor = 0;
     
     public static final int shift1     = 0;
-    public static final int shift2     = 1;
+    public static final int shift2     = 7;
     
     // intake
     public static final int openArm1   = 2;

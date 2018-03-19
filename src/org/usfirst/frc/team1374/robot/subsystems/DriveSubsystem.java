@@ -53,10 +53,10 @@ public class DriveSubsystem extends Subsystem {
     }
     
     public void tankDrive(double left, double right) {
-        left1.set(ControlMode.PercentOutput, -left);
-        left2.set(ControlMode.PercentOutput, -left);
-        right1.set(ControlMode.PercentOutput, right);
-        right2.set(ControlMode.PercentOutput, right);
+        left1.set(ControlMode.PercentOutput, left);
+        left2.set(ControlMode.PercentOutput, left);
+        right1.set(ControlMode.PercentOutput, -right);
+        right2.set(ControlMode.PercentOutput, -right);
     }
 
     public void distanceTankDrive(double left, double right) {
