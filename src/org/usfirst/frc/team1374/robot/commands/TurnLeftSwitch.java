@@ -5,11 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoLine extends CommandGroup {
-    public AutoLine() {
-    	//AutonomousDriveCommand(speed, time, open arm for intake, intake motor, intake arm motor)
-    	//the true and false for the arm is only to be used once true at the beginning of every auto command
-    	//the rest are to turn on the motors for the intake arm and intake, and true  turn on false turns off, no speed control
+public class TurnLeftSwitch extends CommandGroup {
+
+    public TurnLeftSwitch() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,7 +24,10 @@ public class AutoLine extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new AutonomousDriveCommand(-0.5, 3500, 0));
-    	addSequential(new AutonomousIntakeCommand(1, 1000));
+    	addSequential(new AutonomousDriveCommand(0.5, 2000, 0));
+    	addSequential(new AutonomousDriveCommand(0.5, 420, -1));
+    	addSequential(new AutonomousDriveCommand(0.5, 1500, 0));
+    	addSequential(new AutonomousDriveCommand(0.5, 470, 1));
+    	addSequential(new AutonomousDriveCommand(0.5, 2000, 0));
     }
 }

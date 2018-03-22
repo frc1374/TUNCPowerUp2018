@@ -25,16 +25,20 @@ public class RobotMap {
     public static final int compressor = 0;
     
     public static final int shift1     = 0;
-    public static final int shift2     = 1;
+    public static final int shift2     = 7;
     
     // intake
-    public static final int grab1      = 2;
-    public static final int grab2      = 3;
+    public static final int openArm1   = 2;
+    public static final int openArm2   = 3;
+    public static final int lowerArm1  = 4;
+    public static final int lowerArm2  = 5;
     
-    public static final int raise1     = 4;
-    public static final int raise2     = 5;
-    
+    public static final int intake     = 4;
+    public static final int intake2    = 5;
+    public static final int intakeArm1 = 6;
+    public static final int intakeArm2 = 7;
+
     // climb
-    public static final int climber    = 4;
+    public static final int climber    = 9;
     
 }
