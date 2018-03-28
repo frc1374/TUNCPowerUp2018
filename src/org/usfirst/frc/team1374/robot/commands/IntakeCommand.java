@@ -24,7 +24,9 @@ public class IntakeCommand extends Command {
     protected void execute() {
     	Subsystems.INTAKE_SUBSYSTEM.intakeFB(OI.getIntake());
     	Subsystems.INTAKE_SUBSYSTEM.intakeArmFB(OI.getIntakeArm());
-    	if(OI.getIntakeToggle()) Subsystems.INTAKE_SUBSYSTEM.openArmWheel();
+    	Subsystems.INTAKE_SUBSYSTEM.lowerIntakeArm(OI.getArmDown(), OI.getArmUp());
+    	Subsystems.INTAKE_SUBSYSTEM.openArmWheel(OI.getFlipperOut(), OI.getFlipperIn());
+    	//if(OI.getIntakeToggle()) Subsystems.INTAKE_SUBSYSTEM.openArmWheel();
     }
     
     // Make this return true when this Command no longer needs to run execute()

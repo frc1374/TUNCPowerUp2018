@@ -45,7 +45,8 @@ public class Robot extends IterativeRobot {
         chooser.addObject("Center DS", new TurnLeftSwitch());
         chooser.addObject("Right DS", new TurnRightSwitch());
         SmartDashboard.putData("Auto mode", chooser);
-        CameraServer.getInstance().startAutomaticCapture();
+        CameraServer.getInstance().startAutomaticCapture(0);
+        CameraServer.getInstance().startAutomaticCapture(1);
     }
 
     /**
@@ -62,23 +63,31 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-    	String gameData;
+    	/* String gameData, Selected;
     	int station;
+    	boolean switchSideR;
     	station = DriverStation.getInstance().getLocation();
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
         if (gameData.length() > 0) {
         	if (gameData.charAt(0) == 'L') {
-        		if (station == 1) {
-        			autonomousCommand = new StraightSwitch();
-        		}
-        		else if (station == 2) {
+        		switchSideR = false;
+        	}
+        	else {
+        		switchSideR = true;
+        	}
+        }
+        
+        if (station == 1) {
+        	autonomousCommand = new StraightSwitch();
+        	}
+        	else if (station == 2) {
         			autonomousCommand = new TurnLeftSwitch();
-        		}
-        		else {
+        	}
+        	else {
         			autonomousCommand = new AutoLine();
         		}
-        	}
+        }
         	else {
         		if (station == 3) {
         			autonomousCommand = new StraightSwitch();
@@ -90,7 +99,7 @@ public class Robot extends IterativeRobot {
         			autonomousCommand = new AutoLine();
         		}
         	}
-        }
+        } */
         
         // autonomousCommand = (Command) chooser.getSelected();
     	autonomousCommand = new AutoLine();

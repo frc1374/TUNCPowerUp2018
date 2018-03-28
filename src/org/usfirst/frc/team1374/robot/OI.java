@@ -24,7 +24,10 @@ public class OI {
     public static boolean getClimber() { return Operator.getButtonY(); }
     public static double getIntake() { return Operator.getRightYAxis(); }
     public static double getIntakeArm() {return Operator.getLeftYAxis(); }
-    public static boolean getIntakeToggle() { return Operator.getButtonA(); }
+    public static boolean getArmUp() { return Operator.getButtonA(); }
+    public static boolean getArmDown() { return Operator.getButtonB(); }
+    public static boolean getFlipperIn() { return Operator.getButtonRB(); }
+    public static boolean getFlipperOut() { return Operator.getButtonLB(); }
     
     /*                                 Controls
      * Driver

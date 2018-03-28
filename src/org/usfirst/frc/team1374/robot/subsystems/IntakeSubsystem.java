@@ -19,8 +19,19 @@ public class IntakeSubsystem extends Subsystem {
 	public static DoubleSolenoid openArm = new DoubleSolenoid(RobotMap.openArm1, RobotMap.openArm2);
 	public static DoubleSolenoid lowerArm = new DoubleSolenoid(RobotMap.lowerArm1, RobotMap.lowerArm2);
 	
-	public void openArmWheel() {
+	/*public void openArmWheel() {
 		openArm.set(openArm.get() == Value.kReverse ? Value.kForward : Value.kReverse);
+	}*/
+	
+	public void openArmWheel(boolean open, boolean close) {
+		
+		if (open) {
+			openArm.set(Value.kForward);
+	    }
+	    	
+	    else if (close) {
+	    	openArm.set(Value.kReverse);
+	    } 	
 	}
 	
 	public void openArmWheelAuto(boolean open, boolean close) {
@@ -34,6 +45,10 @@ public class IntakeSubsystem extends Subsystem {
 	    } 	
 	}
 	
+	/*public void lowerIntakeArm() {
+		lowerArm.set(lowerArm.get() == Value.kReverse ? Value.kForward : Value.kReverse);
+	}*/
+	
 	public void lowerIntakeArm(boolean down, boolean up) {
 		
 		if (down) {
@@ -41,13 +56,13 @@ public class IntakeSubsystem extends Subsystem {
 		}
 		
 		else if (up) {
-			openArm.set(Value.kReverse);
+			lowerArm.set(Value.kReverse);
 		}
 	}
 		    
 	public void intakeArmFB(double axis) {
-		intakeArm1.set(ControlMode.PercentOutput, +axis);
-		intakeArm2.set(ControlMode.PercentOutput, -axis);
+		intakeArm1.set(ControlMode.PercentOutput, +axis*0.75);
+		intakeArm2.set(ControlMode.PercentOutput, -axis*0.75);
 	}
 	 
 	 
