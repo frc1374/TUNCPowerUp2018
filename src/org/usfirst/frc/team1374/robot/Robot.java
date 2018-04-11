@@ -22,13 +22,12 @@ import org.usfirst.frc.team1374.robot.Util.Subsystems;
  */
 public class Robot extends IterativeRobot {
 
-
     public static OI oi;
     Command DriveCommands;
     Command IntakeCommands;
     Subsystems sub;
     Command autonomousCommand;
-    SendableChooser chooser;
+    SendableChooser<String> chooser;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -39,12 +38,14 @@ public class Robot extends IterativeRobot {
         //oi = new OI();
         DriveCommands = new DriveCommand();
         IntakeCommands = new IntakeCommand();
-        chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new AutoLine());
-        chooser.addObject("Left DS", new StraightSwitch());
-        chooser.addObject("Center DS", new TurnLeftSwitch());
-        chooser.addObject("Right DS", new TurnRightSwitch());
+        
+        chooser = new SendableChooser<String>();
+        chooser.addDefault("AutoLine", "AutoLine");
+        chooser.addObject("CenterSwitch", "CenterSwitch");
+        chooser.addObject("LeftSideSwitch", "LeftSideSwitch");
+        chooser.addObject("RightSideSwitch", "RightSideSwitch");
         SmartDashboard.putData("Auto mode", chooser);
+        
         CameraServer.getInstance().startAutomaticCapture(0);
         CameraServer.getInstance().startAutomaticCapture(1);
     }
@@ -63,46 +64,35 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-    	/* String gameData, Selected;
-    	int station;
     	boolean switchSideR;
-    	station = DriverStation.getInstance().getLocation();
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
-		
-        if (gameData.length() > 0) {
-        	if (gameData.charAt(0) == 'L') {
-        		switchSideR = false;
-        	}
-        	else {
-        		switchSideR = true;
+    	String gameData = DriverStation.getInstance().getGameSpecificMessage();
+    	if (gameData.length() > 0) {
+        	if (gameData.charAt(0) == 'R') { switchSideR = true; }
+        	else { switchSideR = false; }
+        	String Selected = chooser.getSelected();
+        	switch (Selected) {
+	        	case "CenterSwitch":
+	        		if (switchSideR) { autonomousCommand = new CenterRightSwitch(); }
+	        		else { autonomousCommand = new CenterLeftSwitch(); }
+	        		break;
+	        	case "RightSideSwitch":
+	        		if (switchSideR) { autonomousCommand = new RightSideSwitch(); }
+	        		else { autonomousCommand = new AutoLine(); }
+	        		break;
+	        	case "LeftSideSwitch":
+	        		if (switchSideR) { autonomousCommand = new AutoLine(); }
+	        		else { autonomousCommand = new LeftSideSwitch(); }
+	        		break;
+	        	case "AutoLine":
+	        		autonomousCommand = new AutoLine();
+	        		break;
         	}
         }
-        
-        if (station == 1) {
-        	autonomousCommand = new StraightSwitch();
-        	}
-        	else if (station == 2) {
-        			autonomousCommand = new TurnLeftSwitch();
-        	}
-        	else {
-        			autonomousCommand = new AutoLine();
-        		}
-        }
-        	else {
-        		if (station == 3) {
-        			autonomousCommand = new StraightSwitch();
-        		}
-        		else if (station == 2) {
-        			autonomousCommand = new TurnRightSwitch();
-        		}
-        		else {
-        			autonomousCommand = new AutoLine();
-        		}
-        	}
-        } */
-        
+    	else if (gameData == "") { gameData = "LLL"; }
+    	else { gameData = DriverStation.getInstance().getGameSpecificMessage(); }
+    	
         // autonomousCommand = (Command) chooser.getSelected();
-    	autonomousCommand = new AutoLine();
+    	//autonomousCommand = new AutoLine();
     	//autonomousCommand = new AutonomousDriveCommand(0.5, 3500);
     	//autonomousCommand = new AutonomousDistanceCommand(1);
         // schedule the autonomous command (example)

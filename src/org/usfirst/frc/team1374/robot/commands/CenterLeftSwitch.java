@@ -5,11 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoLine extends CommandGroup {
-    public AutoLine() {
-    	//AutonomousDriveCommand(speed, time, open arm for intake, intake motor, intake arm motor)
-    	//the true and false for the arm is only to be used once true at the beginning of every auto command
-    	//the rest are to turn on the motors for the intake arm and intake, and true  turn on false turns off, no speed control
+public class CenterLeftSwitch extends CommandGroup {
+
+    public CenterLeftSwitch() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,12 +24,12 @@ public class AutoLine extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
-    	
-    	//bot goes about 14 fps? or 7 fps if 0.5 speed?
-    	//addSequential(new AutonomousIntakeArmCommand(true, false));
-    	//addSequential(new AutonomousDriveCommand(0, 8000, 0));
-    	addSequential(new AutonomousDriveCommand(0.5, 2000, 0));
-    	//addSequential(new AutonomousIntakeCommand(1, 1000));
+    	addSequential(new AutonomousDriveCommand(0.5, 800, 0));
+    	addSequential(new AutonomousDriveCommand(0.5, 420, -1));
+    	addSequential(new AutonomousDriveCommand(0.5, 900, 0));
+    	addSequential(new AutonomousDriveCommand(0.5, 600, 1));
+    	addSequential(new AutonomousDriveCommand(0.5, 1300, 0));
+    	addSequential(new AutonomousIntakeCommand(-1, 1000));
+    	addSequential(new AutonomousIntakeCommand(0, 1000));
     }
 }

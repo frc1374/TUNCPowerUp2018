@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class TurnLeftSwitch extends CommandGroup {
+public class LeftSideSwitch extends CommandGroup {
 
-    public TurnLeftSwitch() {
+    public LeftSideSwitch() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,10 +24,10 @@ public class TurnLeftSwitch extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new AutonomousDriveCommand(0.5, 2000, 0));
-    	addSequential(new AutonomousDriveCommand(0.5, 420, -1));
-    	addSequential(new AutonomousDriveCommand(0.5, 1500, 0));
-    	addSequential(new AutonomousDriveCommand(0.5, 470, 1));
-    	addSequential(new AutonomousDriveCommand(0.5, 2000, 0));
+    	addSequential(new AutonomousDriveCommand(0.5, 2200, 0));
+    	addSequential(new AutonomousDriveCommand(0.5, 480, 1));
+    	addSequential(new AutonomousDriveCommand(0.3, 1000, 0));
+    	addSequential(new AutonomousIntakeCommand(-1, 1000));
+    	addSequential(new AutonomousIntakeCommand(0, 1000));
     }
 }
