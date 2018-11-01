@@ -25,11 +25,12 @@ public class CenterRightSwitch extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new AutonomousDriveCommand(0.5, 800, 0));
-    	addSequential(new AutonomousDriveCommand(0.5, 630, 1));
-    	addSequential(new AutonomousDriveCommand(0.5, 875, 0));
-    	addSequential(new AutonomousDriveCommand(0.5, 450, -1));
-    	addSequential(new AutonomousDriveCommand(0.5, 1300, 0));
-    	addSequential(new AutonomousIntakeCommand(-1, 1000));
-    	addSequential(new AutonomousIntakeCommand(0, 1000));
+    	addSequential(new AutonomousDriveCommand(0.5, 440, 1));
+    	addSequential(new AutonomousDriveCommand(0.5, 570, 0));
+    	addSequential(new AutonomousDriveCommand(0.5, 430, -1));
+    	addSequential(new AutonomousDriveCommand(0.35, 1400, 0));
+    	addSequential(new AutonomousIntakeCommand(-1, 1000, false));
+    	addSequential(new AutonomousIntakeCommand(0, 1000, false));
+    	addSequential(new AutonomousIntakeCommand(0, 1000, true));
     }
 }

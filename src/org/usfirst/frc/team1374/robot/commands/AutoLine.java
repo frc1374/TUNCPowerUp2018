@@ -32,6 +32,7 @@ public class AutoLine extends CommandGroup {
     	//addSequential(new AutonomousIntakeArmCommand(true, false));
     	//addSequential(new AutonomousDriveCommand(0, 8000, 0));
     	addSequential(new AutonomousDriveCommand(0.5, 2000, 0));
+    	addSequential(new AutonomousIntakeCommand(0, 1000, true));
     	//addSequential(new AutonomousIntakeCommand(1, 1000));
     }
 }

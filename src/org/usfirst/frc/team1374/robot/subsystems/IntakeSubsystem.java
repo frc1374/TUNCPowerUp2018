@@ -61,7 +61,7 @@ public class IntakeSubsystem extends Subsystem {
 	}
 		    
 	public void intakeArmFB(double axis) {
-		intakeArm1.set(ControlMode.PercentOutput, +axis*0.75);
+		intakeArm1.set(ControlMode.PercentOutput, -axis*0.75);
 		intakeArm2.set(ControlMode.PercentOutput, -axis*0.75);
 	}
 	 

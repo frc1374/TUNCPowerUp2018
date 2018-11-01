@@ -41,6 +41,8 @@ public class Robot extends IterativeRobot {
         
         chooser = new SendableChooser<String>();
         chooser.addDefault("AutoLine", "AutoLine");
+        chooser.addObject("LazyDown", "LazyDown");
+        chooser.addObject("LazyUp", "LazyUp");
         chooser.addObject("CenterSwitch", "CenterSwitch");
         chooser.addObject("LeftSideSwitch", "LeftSideSwitch");
         chooser.addObject("RightSideSwitch", "RightSideSwitch");
@@ -85,6 +87,12 @@ public class Robot extends IterativeRobot {
 	        		break;
 	        	case "AutoLine":
 	        		autonomousCommand = new AutoLine();
+	        		break;
+	        	case "LazyDown":
+	        		autonomousCommand = new LazyDown();
+	        		break;
+	        	case "LazyUp":
+	        		autonomousCommand = new LazyUp();
 	        		break;
         	}
         }

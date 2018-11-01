@@ -30,7 +30,7 @@ public class AutonomousDriveCommand extends Command {
         // eg. requires(chassis);
     	requires(Subsystems.DRIVE_SUBSYSTEM);
     	Time = time;
-    	Speed = speed;
+    	Speed = -speed;
     	Turn = turn;
     }
 
